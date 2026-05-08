@@ -1,7 +1,35 @@
+"use client";
 import Link from "next/link";
 import React from "react";
-
+import { useState, useEffect } from "react";
+import axios from "axios";
 export default function RegisterPage() {
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      window.location.href = "/";
+    }
+  }, []);
+
+  const handleRegister = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    try {
+      const res = await axios.post("http://localhost:5000/api/users/register", {
+        username,
+        email,
+        password,
+      });
+      console.log(res.data);
+      window.location.href = "/auth/login";
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <div className="flex-1 flex items-center justify-center p-4 min-h-screen">
       <div className="bg-white rounded-3xl p-8 sm:p-10 w-full max-w-[440px] shadow-sm">
@@ -21,32 +49,42 @@ export default function RegisterPage() {
         <p className="text-sm text-gray-500 text-center mb-8 px-2 sm:px-4 leading-relaxed">Masuk ke akun kamu untuk mencoba brief yang sesuai dengan bidang kamu</p>
 
         {/* Form */}
-        <form className="space-y-4">
+        <form className="space-y-4" onSubmit={handleRegister}>
+          <div className="space-y-2">
+            <label className="text-[13px] font-medium text-gray-500" htmlFor="username">
+              Username
+            </label>
+            <input
+              type="text"
+              id="username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all text-sm text-gray-900 bg-transparent"
+            />
+          </div>
+
           <div className="space-y-2">
             <label className="text-[13px] font-medium text-gray-500" htmlFor="email">
               Email
             </label>
-            <input type="email" id="email" className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all text-sm text-gray-900 bg-transparent" />
+            <input
+              type="email"
+              id="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all text-sm text-gray-900 bg-transparent"
+            />
           </div>
 
-          <div className="space-y-2">
+          <div className="space-y-2 pb-2">
             <label className="text-[13px] font-medium text-gray-500" htmlFor="password">
               Password
             </label>
             <input
               type="password"
               id="password"
-              className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all text-sm text-gray-900 bg-transparent"
-            />
-          </div>
-
-          <div className="space-y-2 pb-2">
-            <label className="text-[13px] font-medium text-gray-500" htmlFor="confirm-password">
-              confirm password
-            </label>
-            <input
-              type="password"
-              id="confirm-password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
               className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all text-sm text-gray-900 bg-transparent"
             />
           </div>

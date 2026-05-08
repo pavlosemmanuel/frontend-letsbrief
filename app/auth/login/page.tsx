@@ -1,7 +1,35 @@
+"use client";
+import axios from "axios";
 import Link from "next/link";
 import React from "react";
+import { useState, useEffect } from "react";
 
 export default function LoginPage() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      window.location.href = "/";
+    }
+  }, []);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    try {
+      const res = await axios.post("http://localhost:5000/api/users/login", {
+        email,
+        password,
+      });
+      localStorage.setItem("token", res.data.token);
+      console.log(res.data);
+      window.location.href = "/";
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className="flex-1 flex items-center justify-center p-4">
       <div className="bg-white rounded-3xl p-8 sm:p-10 w-full max-w-[440px] shadow-sm">
@@ -21,12 +49,18 @@ export default function LoginPage() {
         <p className="text-sm text-gray-500 text-center mb-8 px-2 sm:px-4 leading-relaxed">Masuk ke akun kamu untuk mencoba brief yang sesuai dengan bidang kamu</p>
 
         {/* Form */}
-        <form className="space-y-4">
+        <form className="space-y-4" onSubmit={handleSubmit}>
           <div className="space-y-2">
             <label className="text-[13px] font-medium text-gray-500" htmlFor="email">
               Email
             </label>
-            <input type="email" id="email" className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all text-sm text-gray-900 bg-transparent" />
+            <input
+              type="email"
+              id="email"
+              className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all text-sm text-gray-900 bg-transparent"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
           </div>
 
           <div className="space-y-2">
@@ -37,6 +71,8 @@ export default function LoginPage() {
               type="password"
               id="password"
               className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all text-sm text-gray-900 bg-transparent"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
             />
           </div>
 

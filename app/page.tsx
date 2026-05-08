@@ -3,6 +3,7 @@
 import Image from "next/image";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 interface CategoryType {
   _id: string;
@@ -98,7 +99,9 @@ export default function Home() {
                 <p className="opacity-60 text-sm md:text-base leading-relaxed">{item.description.split(" ").slice(0, 10).join(" ")}....</p>
               </div>
 
-              <button className="px-4 py-3 md:py-4 bg-primary rounded-xl mt-4 text-white font-medium hover:bg-blue-700 transition-colors">Lihat selengkapnya</button>
+              <Link href={`brief/${item._id}`} className="px-4 py-3 md:py-4 bg-primary rounded-xl mt-4 text-white font-medium hover:bg-blue-700 transition-colors text-center">
+                <button>Lihat selengkapnya</button>
+              </Link>
             </div>
           ))}
         </div>
@@ -106,7 +109,7 @@ export default function Home() {
         <button className="px-6 py-3 border-2 border-primary rounded-full text-primary font-medium">Lihat brief lainnya</button>
       </div>
 
-      <div className="w-full h-[500px] relative bg-primary flex flex-col md:flex-row items-center justify-between px-6 md:px-10 lg:px-20 py-16 md:py-20 gap-10 md:gap-0 overflow-hidden">
+      <div className="w-full h-[500px] relative bg-primary flex flex-col md:flex-row items-center justify-between px-6 md:px-10 lg:px-20 py-2 md:py-20 gap-10 md:gap-0 overflow-hidden">
         <div className="w-full md:w-1/2 flex justify-center md:justify-start relative z-10">
           <div className="relative w-[250px] sm:w-[350px] md:w-[450px] lg:w-[500px] aspect-square">
             <Image src={"/girls.png"} fill alt="Ready to build portfolio" className="object-contain" />

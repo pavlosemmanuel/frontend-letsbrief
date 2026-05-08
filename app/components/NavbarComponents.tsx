@@ -2,21 +2,34 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 
 export default function NavbarComponents() {
   const pathname = usePathname();
+  const [token, setToken] = useState<string | null>("");
+
+  useEffect(() => {
+    setToken(localStorage.getItem("token"));
+  }, []);
+
   if (pathname?.startsWith("/auth")) {
     return null;
   }
   const [isOpen, setIsOpen] = useState(false);
 
+  useEffect(() => {
+    const tokenUser = localStorage.getItem("token");
+    setToken(tokenUser);
+  }, []);
+
   return (
     <nav className="relative flex justify-between px-8 py-6 items-center z-50">
       {/* Logo */}
       <div>
-        <Image src="/logo.png" alt="Logo" width={200} height={200} className="w-40 md:w-40 object-contain" />
+        <Link href={"/"}>
+          <Image src="/logo.png" alt="Logo" width={200} height={200} className="w-40 md:w-40 object-contain" />
+        </Link>
       </div>
 
       {/* Desktop Menu */}
@@ -27,7 +40,7 @@ export default function NavbarComponents() {
           </Link>
         </li>
         <li>
-          <Link href={"#"} className="hover:text-primary transition-colors">
+          <Link href={"studicase"} className="hover:text-primary transition-colors">
             Studi case
           </Link>
         </li>
@@ -39,9 +52,17 @@ export default function NavbarComponents() {
       </div>
 
       {/* Desktop Button */}
-      <div className="hidden md:block">
-        <button className="px-6 py-4 rounded-full bg-primary text-white font-medium hover:bg-blue-700 transition-colors">Get started</button>
-      </div>
+      {token ? (
+        <div className="hidden md:block">
+          <button className="px-6 py-4 text-lg rounded-full bg-primary text-white font-medium hover:bg-blue-700 transition-colors">Profile</button>
+        </div>
+      ) : (
+        <div className="hidden md:block">
+          <button className="px-6 py-4 rounded-full bg-primary text-white font-medium hover:bg-blue-700 transition-colors">
+            <Link href={"/auth/login"}>Get Started</Link>
+          </button>
+        </div>
+      )}
 
       {/* Mobile Menu Toggle Button */}
       <button className="md:hidden flex flex-col justify-center items-center w-8 h-8 space-y-1.5 focus:outline-none" onClick={() => setIsOpen(!isOpen)} aria-label="Toggle Menu">
@@ -76,9 +97,15 @@ export default function NavbarComponents() {
             </Link>
           </li>
         </ul>
-        <button className="w-full mt-2 px-6 py-3 rounded-full bg-primary text-white font-medium hover:bg-blue-700 transition-colors" onClick={() => setIsOpen(false)}>
-          Get started
-        </button>
+        {token ? (
+          <button className="w-full mt-2 px-6 py-3 rounded-full bg-primary text-white font-medium hover:bg-blue-700 transition-colors" onClick={() => setIsOpen(false)}>
+            Profile
+          </button>
+        ) : (
+          <button className="w-full mt-2 px-6 py-3 rounded-full bg-primary text-white font-medium hover:bg-blue-700 transition-colors" onClick={() => setIsOpen(false)}>
+            Get started
+          </button>
+        )}
       </div>
     </nav>
   );
