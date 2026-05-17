@@ -1,36 +1,76 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🚀 LestBrief: Professional Case Study & Brief Platform
 
-## Getting Started
+[![Next.js](https://img.shields.io/badge/Next.js-black?style=for-the-badge&logo=next.js&logoColor=white)](https://nextjs.org/)
+[![Express.js](https://img.shields.io/badge/Express.js-404D59?style=for-the-badge)](https://expressjs.com/)
+[![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)](https://www.mongodb.com/)
+[![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
 
-First, run the development server:
+> **Live Demo:** [Tulis link live demo di sini jika sudah deploy, misal: https://lestbrief.com]
 
+## 📖 About The Project
+
+Banyak developer dan desainer pemula terjebak dalam *tutorial hell* dan kebingungan saat ingin membangun portofolio yang relevan dengan dunia kerja nyata. **LestBrief** hadir sebagai solusi.
+
+LestBrief adalah platform penyedia *template brief* dan studi kasus komprehensif yang dirancang khusus untuk membantu para pengembang dan desainer membangun portofolio yang lebih profesional dan relevan dengan standar serta kebutuhan industri saat ini.
+
+Proyek ini saya kembangkan sebagai wadah untuk mengeksplorasi alur kerja (*workflow*) pengembangan aplikasi *fullstack* modern, dari merancang antarmuka pengguna hingga membangun struktur *backend* yang aman dan skalabel.
+
+## 🛠️ Tech Stack & Tools
+
+- **Frontend:** Next.js, Tailwind CSS
+- **Backend:** Node.js, Express.js
+- **Database:** MongoDB Atlas
+- **AI Integration:** Antigravity (Untuk efisiensi *development* UI/UX)
+
+## 💡 Key Learnings & Development Highlights
+
+Pengembangan LestBrief sejauh ini menjadi salah satu pengalaman belajar yang paling berharga bagi saya. Beberapa fokus utama dalam pengembangan aplikasi ini meliputi:
+
+1. **Scalable & Maintainable Backend:** Belajar merancang arsitektur *backend* Express.js yang rapi, terstruktur, dan mudah dikembangkan (*scalable*) untuk jangka panjang.
+2. **Web Security:** Menerapkan sistem keamanan website berlapis untuk mencegah kerentanan dan memastikan data aplikasi serta pengguna tidak mudah dieksploitasi.
+3. **AI-Driven Development:** Memanfaatkan **Antigravity** pada sisi *frontend* untuk mempercepat proses *development*. Dalam proses ini, saya mengasah kemampuan *prompt engineering* agar AI dapat menghasilkan *output* kode yang presisi dan sesuai dengan pedoman desain sistem.
+4. **Modern Fullstack Workflow:** Memahami secara mendalam bagaimana komponen *frontend* (Next.js) dan *backend* (Express & MongoDB) saling berkomunikasi dengan efisien.
+
+## 🚀 Getting Started (Cara Menjalankan Secara Lokal)
+
+Jika ingin menjalankan proyek ini di mesin lokal, ikuti langkah-langkah berikut:
+
+### Prasyarat
+- Node.js (v18 atau lebih baru)
+- Akun MongoDB Atlas (atau MongoDB lokal)
+
+### Instalasi Backend
 ```bash
+# 1. Masuk ke folder backend
+cd backend
+
+# 2. Install dependencies
+npm install
+
+# 3. Buat file .env dan masukkan URI MongoDB Anda
+# Contoh: MONGO_URI=mongodb+srv://<username>:<password>@cluster.mongodb.net/lestbrief
+
+# 4. Jalankan server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+🚧 Status Proyek
+Proyek ini masih dalam tahap pengembangan aktif. Beberapa fitur masa depan yang direncanakan:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+[ ] Fitur User Authentication dan Dashboard pengguna.
 
-## Learn More
+[ ] Sistem Progress Tracker untuk brief yang sedang dikerjakan.
 
-To learn more about Next.js, take a look at the following resources:
+[ ] Integrasi filter tingkat kesulitan dan kategori tech-stack.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+👨‍💻 Author
+Dikembangkan oleh Jonathan — Full-stack Web Developer & Pengajar.
+Dibuat dengan semangat berbagi di sela-sela kesibukan mengajar di bidang edukasi.
 
-## Deploy on Vercel
+LinkedIn: https://www.linkedin.com/in/jonathan-imanuel-436300264/
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Email: jonathan021104@gmail.com
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
