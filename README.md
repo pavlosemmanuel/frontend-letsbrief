@@ -5,7 +5,7 @@
 [![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)](https://www.mongodb.com/)
 [![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
 
-> **Live Demo:** [Tulis link live demo di sini jika sudah deploy, misal: https://lestbrief.com]
+> **Live Demo: 
 
 ## 📖 About The Project
 
